@@ -19,3 +19,42 @@
 - HTTPs
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+# Structure
+
+- Header
+- -Logo
+- - Nav Items
+
+- Body
+- - Search
+- - RestaurantContainer
+- - RestraurantCard
+- - - Image
+- - - Info
+- - - - Name
+- - - - Address
+- - - - Rating
+
+- Footer
+- - Copyright
+- - Links
+- - Address
+- - Contact
+
+Two types of import/export
+
+- Default Export/Import
+  export default Component;
+  import Component from 'path';
+
+- Named Export/Import
+  export const Component;
+  import { Component } from "path";
+
+  # React Hooks
+
+  (Normal JS utility functions)
+
+  - useState() - Super powerful utility function
+  - useEffect()

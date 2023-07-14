@@ -1,4 +1,4 @@
-const resList = [
+export const resList = [
   {
     "info": {
       "id": "382746",
@@ -1868,4 +1868,3 @@ const resList = [
   }
 ]
 
-export { resList }
