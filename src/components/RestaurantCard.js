@@ -5,7 +5,7 @@ const styledCard = {
 }
 
 const RestaurantCard = ({ resData }) => {
-  const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } = resData?.info;
+  const { name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } = resData?.data;
   return (
     <div className="restaurant-card" style={styledCard}>
       <div>
@@ -13,8 +13,8 @@ const RestaurantCard = ({ resData }) => {
           alt="restaurant" />
         <h3>{name}</h3>
         <h4>{cuisines.join(', ')}</h4>
+        <h4>{`₹${costForTwo / 100} for two`}</h4>
         <h4>{avgRating} Stars</h4>
-        <h4>{costForTwo}</h4>
         <h4>{sla.deliveryTime} mins</h4>
       </div>
     </div>

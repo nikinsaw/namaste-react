@@ -28,7 +28,7 @@
   margin: 10px;
 }
 
-/* Restraunt Container */
+/* Restaurant Container */
 
 .restaurant-container {
   display: flex;
@@ -52,10 +52,40 @@
   height: 200px;
 }
 
+/*Filter */
+.filter {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+}
+
 /* Filter Btn */
 .filter-btn {
   margin: 10px;
   padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Shimmer */
+.shimmer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 5px;
+  padding: 8px;
+  width: 200px;
+  height: 500px;
+  background-color: #f6f7f8;
+  border: 1px solid #ccc;
+}
+
+/* Login Button */
+.login-btn {
+  padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
