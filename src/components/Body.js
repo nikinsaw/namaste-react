@@ -34,7 +34,7 @@ const Body = () => {
         </div>
         <button className="filter-btn" onClick={() => {
           setListOfRestaurants(old => old.filter(res => res.info.avgRating > 4))
-        }} >Top Rated Restaurants</button>
+        }}>Top Rated Restaurants</button>
       </div>
       <div className="restaurant-container">
         {filteredRestraunt.map((restraunt) => <RestaurantCard key={restraunt?.data?.id} resData={restraunt} />)}

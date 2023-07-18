@@ -58,3 +58,8 @@ Two types of import/export
 
   - useState() - Super powerful utility function
   - useEffect()
+
+  # 2 types of routing in React apps
+
+  - Client Side Routing
+  - Server Side Routing
