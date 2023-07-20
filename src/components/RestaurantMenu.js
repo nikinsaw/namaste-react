@@ -23,20 +23,26 @@ const RestaurantMenu = () => {
   const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card.card
 
   return <div className="menu">
-    <h1>{name}</h1>
-    <p>{cuisines.join(", ")} - {costForTwoMessage}</p>
     <ul className="menu-container">
+      <div>
+        <h1>{name}</h1>
+        <p>{cuisines.join(", ")}</p>
+        <p>{costForTwoMessage}</p>
+      </div>
       {itemCards.map((item) => {
         const { id, name, price, description, imageId, defaultPrice } = item?.card?.info
-        console.log(item.card.info)
-        return <li key={id} className="menu-card">
-          <img className="menu-item-image" src={`${CDN_URL + imageId}`} alt="food" />
-          <div className="menu-card-info">
-            <h3>{name}</h3>
-            <h4>{price || defaultPrice}</h4>
-            <p>{description}</p>
-          </div>
-        </li>
+        return (
+          <li key={id} className="menu-card">
+            <div className="menu-card-info">
+              <h3>{name}</h3>
+              <h4>{`₹${price / 100 || defaultPrice / 100}`}</h4>
+              <p>{description}</p>
+            </div>
+            <div className="menu-image-wrapper">
+              <img className="menu-item-image" src={`${CDN_URL + imageId}`} alt="food" />
+            </div>
+          </li>
+        )
       })}
     </ul>
   </div>

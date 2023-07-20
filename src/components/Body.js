@@ -20,7 +20,7 @@ const Body = () => {
     setListOfRestaurants(data?.data?.cards[2]?.data?.data?.cards)
     setFilteredRestraunt(data?.data?.cards[2]?.data?.data?.cards)
   }
-  console.log("body rendered")
+
   return (listOfRestaurants.length === 0) ? <Shimmer /> : (
     <div className="body">
       <div className="filter">
@@ -36,6 +36,7 @@ const Body = () => {
           setListOfRestaurants(old => old.filter(res => res.info.avgRating > 4))
         }}>Top Rated Restaurants</button>
       </div>
+      <h3 className='restaurant-cards-header'>Restaurants with online food delivery in Mumbai</h3>
       <div className="restaurant-container">
         {filteredRestraunt.map((restraunt) => <RestaurantCard key={restraunt?.data?.id} resData={restraunt} />)}
       </div>

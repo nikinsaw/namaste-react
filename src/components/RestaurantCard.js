@@ -1,26 +1,23 @@
 import { Link } from 'react-router-dom';
 import { CDN_URL } from '../utils/constants';
 
-const styledCard = {
-  backgroundColor: "#f0f0f0"
-}
 
 const RestaurantCard = ({ resData }) => {
-  const { id, name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId } = resData?.data;
+  const { id, name, cuisines, avgRating, costForTwo, sla, cloudinaryImageId, area, aggregatedDiscountInfoV3 } = resData?.data;
   return (
-    <div key={id} className="restaurant-card" style={styledCard}>
-      <Link to={`/restaurants/${id}`} >
-        <div>
-          <img className="restaurant-image" src={`${CDN_URL + cloudinaryImageId}`}
-            alt="restaurant" />
-          <h3>{name}</h3>
-          <h4>{cuisines.join(', ')}</h4>
-          <h4>{`₹${costForTwo / 100} for two`}</h4>
-          <h4>{avgRating} Stars</h4>
-          <h4>{sla.deliveryTime} mins</h4>
-        </div>
-      </Link>
-    </div>
+    <Link key={id} className="restaurant-card" to={`/restaurants/${id}`} >
+      <div style={{ position: "relative" }}>
+        <div className="overlay"></div>
+        {aggregatedDiscountInfoV3 && <p style={{ fontFamily: "sans-serif", fontSize: 20, fontWeight: 'bold', color: "white", position: "absolute", bottom: 0, padding: 15 }}>{aggregatedDiscountInfoV3?.header + " " + aggregatedDiscountInfoV3?.subHeader}</p>}
+        <img className="restaurant-image" src={`${CDN_URL + cloudinaryImageId}`}
+          alt="restaurant" />
+      </div>
+      <h3>{name}</h3>
+      <h4>{avgRating} Stars</h4>
+      <h5>{cuisines.join(', ')}</h5>
+      <h5>{area}</h5>
+      <p><span>₹</span>{`${costForTwo / 100} for two`}</p>
+    </Link>
   );
 };
 
