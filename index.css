@@ -237,3 +237,16 @@
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* User */
+.user-card {
+  gap: 30px;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+}

@@ -2,25 +2,22 @@ import { useEffect, useState } from 'react';
 import { resList } from '../utils/mockData';
 import RestaurantCard from './RestaurantCard';
 import Shimmer from './Shimmer';
+import useOnlineStatus from '../utils/useOnlineStatus';
+import useListOfRestaurants from '../utils/useListOfRestaurants';
 
 const Body = () => {
-  // local state Variable
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const listOfRestaurants = useListOfRestaurants()
   const [filteredRestraunt, setFilteredRestraunt] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const onlineStatus = useOnlineStatus()
   useEffect(() => { //useEffect has two arguments, first is a callback function and second is an dependency array
-    fetchData();
-  }, [])
+    setFilteredRestraunt(listOfRestaurants)
+  }, [listOfRestaurants])
 
-  const fetchData = async () => {
-    const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.2095375&lng=72.864102&page_type=DESKTOP_WEB_LISTING")
-    const data = await response.json()
-    console.log(data)
-    setListOfRestaurants(data?.data?.cards[2]?.data?.data?.cards)
-    setFilteredRestraunt(data?.data?.cards[2]?.data?.data?.cards)
+
+  if (!onlineStatus) {
+    return <h1>Looks like you are Offline!! Please check your internet connection</h1>
   }
-
   return (listOfRestaurants.length === 0) ? <Shimmer /> : (
     <div className="body">
       <div className="filter">
@@ -33,7 +30,7 @@ const Body = () => {
           }}>Search</button>
         </div>
         <button className="filter-btn" onClick={() => {
-          setListOfRestaurants(old => old.filter(res => res.info.avgRating > 4))
+          setFilteredRestraunt(listOfRestaurants.filter(res => res?.data?.avgRating > 4))
         }}>Top Rated Restaurants</button>
       </div>
       <h3 className='restaurant-cards-header'>Restaurants with online food delivery in Mumbai</h3>
