@@ -4,6 +4,7 @@ import logoPartOne from '../assets/logo_part_one.png'
 import logoPartTwo from '../assets/logo_part_two.png'
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -11,7 +12,7 @@ const Header = () => {
   const [scrollPos, setScrollPos] = useState(0);
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
-
+  const cartItems = useSelector(state => state.cart.items)
   useEffect(() => {
     const handleScroll = (event) => {
       const currentScrollPos = window.scrollY;
@@ -37,7 +38,7 @@ const Header = () => {
           <li><Link to="/grocery">Grocery</Link></li>
           <li><Link to="/about" >About Us</Link></li>
           <li><Link to="/contact">Contact Us</Link></li>
-          <li>Cart</li>
+          <li><Link to="/cart" >Cart ({cartItems.length} items)</Link></li>
           <button className="login-btn" onClick={() => btnNameReact === "Logout" ? setBtnNameReact("Login") : setBtnNameReact("Logout")}>{btnNameReact}</button>
           <li className="font-bold">{loggedInUser}</li>
         </ul>
